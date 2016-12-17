@@ -1,0 +1,13 @@
+language: c
+
+os:
+    - linux
+    - osx
+
+compiler:
+    - gcc
+
+script:
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make -C mDNSPosix os=linux libdns_sd; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make -C mDNSPosix os=x libdns_sd; fi
+    - make -C Clients
